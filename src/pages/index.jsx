@@ -12,11 +12,9 @@ export default function Home() {
   }, [])
   // コンポーネントがマウントされるときに読み込まれる
   useEffect(() => {
-    console.log("マウント")
     document.body.style.backgroundColor = "lightblue";
     // リターン以後はアンマウントの際の処理を書く
     return () => {
-      console.log("アンマウント")
       document.body.style.backgroundColor = "";
     }
   }, [])
