@@ -3,12 +3,22 @@ import classes from 'src/styles/Home.module.css'
 import { Header } from 'src/components/Header'
 import { Main } from 'src/components/Main'
 import { Footer } from 'src/components/Footer'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 export default function Home() {
   const handleClick = useCallback((e) => {
     e.preventDefault();
     alert('sss');
+  }, [])
+  // コンポーネントがマウントされるときに読み込まれる
+  useEffect(() => {
+    console.log("マウント")
+    document.body.style.backgroundColor = "lightblue";
+    // リターン以後はアンマウントの際の処理を書く
+    return () => {
+      console.log("アンマウント")
+      document.body.style.backgroundColor = "";
+    }
   }, [])
   return (
     <div className={classes.container}>
