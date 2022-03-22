@@ -9,10 +9,12 @@ export default function Home() {
   // ボタンのカウントアップ
   const [count, setCount] = useState(1);
 
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
+    if(count < 10){
     // fooを受け取ってfoo + 1のfunctionを作成する
     setCount((count) => count + 1);
-  };
+    }
+  }, [count]);
   // コンポーネントがマウントされるときに読み込まれる
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
@@ -20,7 +22,7 @@ export default function Home() {
     return () => {
       document.body.style.backgroundColor = "";
     }
-  }, [])
+  }, [count])
   return (
     <div className={classes.container}>
       <Head>
